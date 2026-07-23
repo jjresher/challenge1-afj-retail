@@ -3,7 +3,7 @@
 # Taller Práctico 01 — [Nombre del equipo]
 
 **Curso:** Fundamentos en Ciencia de Datos — Maestría en Ciencia de Datos y Analítica, EAFIT
-**Conjunto de datos elegido:** [A - Retail / B - Salud / C - Movilidad] — *(elimine las que no apliquen)*
+**Conjunto de datos elegido:** A - Retail
 **Fecha límite de entrega:** domingo 26 de julio de 2026
 **Fecha de entrega real:** [dd/mm/aaaa]
 
@@ -11,8 +11,8 @@
 
 | Nombre completo | Cédula         |
 | --------------- | -------------- |
-| [Nombre 1]      | [N° de cédula] |
-| [Nombre 2]      | [N° de cédula] |
+| Juan Jose Restrepo      | 1193082063 |
+| Felipe Quesada      | [N° de cédula] |
 | [Nombre 3]      | [N° de cédula] |
 
 ---
