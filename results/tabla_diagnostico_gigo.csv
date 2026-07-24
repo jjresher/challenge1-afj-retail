@@ -1,0 +1,6 @@
+problema,pilar_gigo,evidencia,metodo_deteccion
+Valores faltantes,Completitud,"date:10, units_sold:21, unit_price:12, customer_rating:64 nulos",df.isnull().sum()
+Duplicados de evento de negocio,Unicidad,10 transaction_id repetidos + 1 fila duplicada exacta,df['transaction_id'].duplicated().sum()
+Etiquetas categóricas inconsistentes,Consistencia,19 valores únicos en 'category' para 4 categorías reales,df['category'].unique()
+Formatos de fecha mixtos,Consistencia,"date mezcla ISO, US ('06-24-2025') y texto ('May 21, 2025')",df['date'].sample(15)
+Valores imposibles,Validez,units_sold min=-6; customer_rating con -1 y 7 (fuera de 1-5),df['units_sold'].describe()
