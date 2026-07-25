@@ -1,6 +1,6 @@
 # challenge1-retail-db
 
-# Taller Práctico 01 — [Nombre del equipo]
+# Taller Práctico 01 — afj
 
 **Curso:** Fundamentos en Ciencia de Datos — Maestría en Ciencia de Datos y Analítica, EAFIT
 
