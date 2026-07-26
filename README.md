@@ -16,7 +16,7 @@
 | --------------- | -------------- |
 | Juan Jose Restrepo      | 1193082063 |
 | Felipe Quesada      | [N° de cédula] |
-| [Nombre 3]      | [N° de cédula] |
+| Andrés Vélez Rendón      | 1001371042 |
 
 ---
 
