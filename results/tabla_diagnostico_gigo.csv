@@ -1,6 +1,10 @@
-problema,pilar_gigo,evidencia,metodo_deteccion
-Valores faltantes,Completitud,"date:10, units_sold:21, unit_price:12, customer_rating:64 nulos",df.isnull().sum()
-Duplicados de evento de negocio,Unicidad,10 transaction_id repetidos + 1 fila duplicada exacta,df['transaction_id'].duplicated().sum()
-Etiquetas categóricas inconsistentes,Consistencia,19 valores únicos en 'category' para 4 categorías reales,df['category'].unique()
-Formatos de fecha mixtos,Consistencia,"date mezcla ISO, US ('06-24-2025') y texto ('May 21, 2025')",df['date'].sample(15)
-Valores imposibles,Validez,units_sold min=-6; customer_rating con -1 y 7 (fuera de 1-5),df['units_sold'].describe()
+problema,pilar_gigo,evidencia,metodo_deteccion,riesgo_para_decision
+Valores faltantes,Completitud,"date:10, units_sold:21, unit_price:12, customer_rating:64 nulos",df.isnull().sum(),"Subestima ventas, ingresos o insatisfaccion."
+Duplicados de evento de negocio,Unicidad,10 transaction_id repetidos + 1 fila duplicada exacta,df['transaction_id'].duplicated().sum(),Infla rotacion e ingresos.
+Etiquetas categoricas inconsistentes,Consistencia,19 valores unicos en 'category' para 4 categorias reales,df['category'].unique(),Fragmenta una categoria en grupos falsos.
+Formatos de fecha mixtos,Consistencia,"date mezcla ISO, con '/', con '-', texto y nulos","patrones de texto y to_datetime(..., errors='coerce')",Asigna ventas al dia o mes equivocado.
+Valores imposibles,Validez,8 cantidades negativas y 6 ratings fuera de 1-5,between() y comparaciones,Distorsiona demanda y satisfaccion.
+Precios inflados por error de digitacion,Validez,5 precios con dos ceros adicionales (>= 100.000 COP),regla comercial y revision por categoria,Infla el ingreso y la dispersion.
+Georreferenciacion fuera de rango,Georreferenciacion,6 coordenadas en cero o fuera de Medellin,between() para latitud y longitud,Ubica tiendas en zonas incorrectas.
+Columna sentiment 100% nula,Completitud,160/160 valores nulos en df_resenas['sentiment'],df_resenas['sentiment'].isna().sum(),Columna inservible tal como esta: no aporta analisis de sentimiento sin procesar el texto.
+Rating de resenas con nulos,Completitud,14/160 resenas sin rating numerico,df_resenas['rating'].isna().sum(),Sesga el rating promedio por tienda si se ignoran sin marcarlos.
