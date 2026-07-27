@@ -1,0 +1,6 @@
+pandas==2.3.3
+numpy==2.5.1
+matplotlib==3.11.1
+seaborn==0.13.2
+ipython==9.15.0
+notebook==7.6.1
