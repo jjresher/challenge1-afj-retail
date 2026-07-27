@@ -1,6 +1,6 @@
 # Declaración de uso de Inteligencia Artificial
 
-**Curso:** Fundamentos en Ciencia de Datos — Maestría en Ciencia de Datos y Analítica, EAFIT
+**Curso:** Fundamentos en Ciencia de Datos de la Maestría en Ciencia de Datos y Analítica, EAFIT
 **Taller:** Taller Práctico 01 (Dataset A: Retail)
 **Equipo:** Juan José Restrepo, Luis Felipe Quesada, Andrés Vélez Rendón
 

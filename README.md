@@ -1,8 +1,8 @@
-# Taller Práctico 01 — afj
+# Taller Práctico 01: afj
 
-**Curso:** Fundamentos en Ciencia de Datos — Maestría en Ciencia de Datos y Analítica, EAFIT
+**Curso:** Fundamentos en Ciencia de Datos de la Maestría en Ciencia de Datos y Analítica, EAFIT
 
-**Conjunto de datos elegido:** A - Retail
+**Conjunto de datos elegido:** Dataset A: Retail
 
 **Fecha límite de entrega:** Lunes 27 de julio de 2026
 
