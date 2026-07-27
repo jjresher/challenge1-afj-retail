@@ -43,19 +43,26 @@
 ```
 .
 ├── README.md
+├── requirements.txt
 ├── data/
-│   ├── raw/                  # datos originales (sin modificar)
-│   └── processed/            # datos ya limpios, generados por el notebook
+│   ├── raw/
+│   │   ├── reseñas_clientes.json
+│   │   ├── retail_ventas_CONTAMINADO.csv
+│   │   └── retail_ventas_LIMPIO.csv
+│   └── processed/
+│       └── retail_ventas_PROCESADO.csv
+├── docs/
+│   └── declaracion_uso_IA.md
 ├── notebooks/
 │   └── taller_practico_01_analisis.ipynb
-├── src/                      # funciones auxiliares (opcional)
 ├── results/
 │   ├── figuras/
+│   │   ├── distribucion_precio_unitario.jpg
+│   │   ├── resumen_categoria_tienda.jpg
+│   │   └── transacciones_por_categoria.jpg
 │   └── tabla_diagnostico_gigo.csv
-├── taller_practico/
-│   └── Taller_Practico_01.tex   # enunciado recibido (respuestas dentro del notebook)
-└── docs/
-    └── declaracion_uso_IA.md
+└── taller_practico/
+    └── Taller_Practico_01.tex
 ```
 
 ## 4. Cómo reproducir el análisis (Solamente vía terminal)
