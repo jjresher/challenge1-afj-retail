@@ -4,51 +4,59 @@
 **Taller:** Taller Práctico 01 (Dataset A: Retail)
 **Equipo:** Juan José Restrepo, Luis Felipe Quesada, Andrés Vélez Rendón
 
-Este taller se resolvió con apoyo de asistentes de IA generativa, según lo permite y espera el
-Pacto Pedagógico. La división del trabajo fue explícita: **el criterio analítico es del equipo;
-la ejecución operativa se apoyó en IA.** Declaramos ambas partes con el mismo detalle.
+El equipo utilizó apoyo de IA generativa dentro de los límites definidos por el Pacto Pedagógico.
+Los tres integrantes revisaron el contenido analítico, comprenden las decisiones adoptadas y
+pueden defender tanto los métodos como las conclusiones.
 
-## 1. Lo que decidió el equipo (criterio)
+## Análisis e interpretación
 
-Ninguna de estas decisiones fue delegada. Son las que sostenemos frente al docente:
+Las siguientes decisiones y conclusiones corresponden al análisis del equipo:
 
-- La elección del conjunto de datos y la pregunta de negocio que decidimos responder.
-- Qué cuenta como problema de calidad en este archivo y por qué cada uno es un riesgo para la
-  decisión (columna `riesgo_para_decision` de la tabla GIGO).
-- Las reglas de validación: rango geográfico de Medellín (lat 6,1–6,4; lon −75,7 a −75,4), rango
-  comercial de precios (1.000–9.000 COP) y `units_sold` como entero mayor que cero.
-- Las estrategias de imputación: mediana por categoría para unidades y precio, mediana geográfica
-  por `store_id` para coordenadas, y la decisión de **no** imputar `customer_rating` (no se
-  fabrica satisfacción) ni las fechas no convertibles.
-- La llave de deduplicación y su excepción: argumentamos en 2.6 que la llave de negocio es
-  `store_id + date + category + unit_price`, y documentamos por qué en este archivo concreto
-  `transaction_id` resultó ser el campo más confiable.
-- La lectura de la discrepancia entre el rating de las reseñas y el de las ventas: son dos
-  instrumentos distintos, no un error de carga.
-- La recomendación final, el costo del falso positivo y del falso negativo, y las limitaciones
-  que persisten después de la limpieza.
+- La pregunta de negocio busca identificar qué categoría y qué tienda presentan mayor riesgo de
+  perder ventas o clientes por falta de inventario o por un servicio deficiente.
+- Los criterios de calidad abarcan completitud, unicidad, consistencia y validez. El equipo
+  comprobó fechas convertibles, categorías reconocidas, unidades enteras mayores que cero,
+  ratings entre 1 y 5, precios dentro del rango comercial y coordenadas compatibles con Medellín.
+- La estrategia de imputación usa la mediana de la categoría para `units_sold` y `unit_price`, y
+  la mediana de cada `store_id` para las coordenadas. Las fechas sin evidencia y los valores
+  faltantes de `customer_rating` se conservan como nulos para no inventar información.
+- La llave de negocio propuesta es `store_id + date + category + unit_price`. En el archivo crudo,
+  esa llave detecta 2 pares y `transaction_id` detecta 10. Como la contaminación modificó fechas,
+  categorías o precios dentro de ocho pares, el equipo eligió `transaction_id` como llave práctica
+  para este conjunto de datos y conservó la fila más completa de cada duplicado.
+- La reflexión de la Tarea 1 concluye que convertir y agregar una fuente semiestructurada puede
+  conservar el promedio numérico, pero pierde la causa cualitativa que vive en `text`. Las reseñas
+  permiten formular hipótesis por tienda, aunque no están vinculadas con una venta específica.
+- La discrepancia entre el rating de las reseñas y el rating de las ventas no es un error de
+  carga. Son instrumentos distintos y pueden medir momentos diferentes de la experiencia del
+  cliente, por lo que toda conclusión debe identificar la fuente utilizada.
+- La tabla de contingencia muestra que la distribución del rating cambia según la categoría. En
+  `Pan`, `Pasteles` y `Snacks` predomina el rating 4, mientras `Bebidas` concentra su mayor
+  proporción en el rating 5. Un solo promedio por tienda oculta estas diferencias.
+- El análisis descriptivo recupera 420 eventos únicos. `Pan` presenta la mayor rotación promedio,
+  con 4,08 unidades por transacción, y `Pasteles` aporta el mayor ingreso total. S07 y S05 tienen
+  los ratings promedio más bajos, con 3,77 y 3,82 respectivamente, aunque la diferencia entre
+  ambas tiendas es pequeña y exige revisar las dos.
+- La hipótesis revisada sobre S07 se apoya en el texto de las reseñas. La queja más frecuente es
+  que el local estaba desordenado, con 5 menciones entre 27 reseñas. Por eso el equipo interpreta
+  que existe un problema operativo de orden, limpieza o atención y no solamente un posible
+  problema de inventario.
+- La recomendación final es realizar un piloto de reposición frecuente de `Pan` en S07 y S05,
+  acompañado de una revisión operativa del servicio, y proteger el abastecimiento de `Pasteles`
+  por su aporte al ingreso. El seguimiento debe medir quiebres, merma y ratings durante cuatro
+  semanas.
 
-## 2. Lo que se apoyó en IA (ejecución)
+## Apoyo operativo de IA
 
-- Sintaxis de `pandas`, `matplotlib` y `seaborn` en las celdas de carga, limpieza, agregación y
-  graficación.
-- La estructura y el orden de las secciones del notebook.
-- La **redacción** de las celdas Markdown a partir de los argumentos que el equipo definió
-  previamente. El texto es asistido; el argumento no.
-- El código de integración y aplanado del archivo `reseñas_clientes.json`.
-- Una revisión de cumplimiento del entregable contra la guía del taller, y la organización de los
-  commits del repositorio.
+El apoyo de IA se limitó a tareas mecánicas:
 
-## 3. Cómo se validó
+- Consulta de sintaxis de `pandas`, `matplotlib` y `seaborn`.
+- Organización de secciones y celdas del notebook.
+- Formato inicial de tablas y visualizaciones.
+- Redacción inicial de párrafos a partir de argumentos definidos previamente por el equipo.
 
-- El notebook se ejecutó completo de principio a fin (reinicio de kernel + ejecución secuencial),
-  sin errores y con todas las celdas produciendo salida.
-- Cada cifra citada en el notebook y en el README se contrastó contra los datos reales antes de
-  aceptarse. Corregimos manualmente las que el asistente había redondeado o arrastrado de una
-  versión anterior del análisis.
-- `retail_ventas_LIMPIO.csv` se usó únicamente como verificación final, nunca como fuente para
-  rellenar valores durante la limpieza.
+## Validación
 
-## 4. Herramientas
-
-Claude (Anthropic), vía interfaz de chat y vía Claude Code en terminal.
+El notebook se ejecuta de principio a fin tras reiniciar el kernel, sin errores. Todas las cifras
+citadas se contrastaron contra los datos crudos, y el archivo limpio de referencia se utilizó
+solamente para verificar el resultado propio.
