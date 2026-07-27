@@ -6,9 +6,9 @@
 
 **Conjunto de datos elegido:** A - Retail
 
-**Fecha límite de entrega:** domingo 26 de julio de 2026
+**Fecha límite de entrega:** Lunes 27 de julio de 2026
 
-**Fecha de entrega real:** [dd/mm/aaaa]
+**Fecha de entrega real:** Lunes 27 de julio de 2026
 
 **Integrantes del equipo:**
 
