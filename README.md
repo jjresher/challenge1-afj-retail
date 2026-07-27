@@ -1,5 +1,3 @@
-# challenge1-retail-db
-
 # Taller Práctico 01 — afj
 
 **Curso:** Fundamentos en Ciencia de Datos — Maestría en Ciencia de Datos y Analítica, EAFIT
@@ -54,6 +52,8 @@
 ├── results/
 │   ├── figuras/
 │   └── tabla_diagnostico_gigo.csv
+├── taller_practico/
+│   └── Taller_Practico_01.tex   # enunciado recibido (respuestas dentro del notebook)
 └── docs/
     └── declaracion_uso_IA.md
 ```
