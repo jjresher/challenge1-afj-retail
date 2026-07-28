@@ -1,6 +1,11 @@
-problema,pilar_gigo,evidencia,metodo_deteccion
-Valores faltantes,Completitud,"date:10, units_sold:21, unit_price:12, customer_rating:64 nulos",df.isnull().sum()
-Duplicados de evento de negocio,Unicidad,10 transaction_id repetidos + 1 fila duplicada exacta,df['transaction_id'].duplicated().sum()
-Etiquetas categóricas inconsistentes,Consistencia,19 valores únicos en 'category' para 4 categorías reales,df['category'].unique()
-Formatos de fecha mixtos,Consistencia,"date mezcla ISO, US ('06-24-2025') y texto ('May 21, 2025')",df['date'].sample(15)
-Valores imposibles,Validez,units_sold min=-6; customer_rating con -1 y 7 (fuera de 1-5),df['units_sold'].describe()
+Problema detectado,Columna(s) afectada(s),Método de detección en pandas,¿Por qué es un riesgo para la decisión de negocio?,Pilar GIGO,Evidencia
+Valores faltantes,"date, units_sold, unit_price, customer_rating",df.isnull().sum(),"Subestima ventas, ingresos o insatisfaccion.",Completitud,"date:10, units_sold:21, unit_price:12, customer_rating:64 nulos"
+Duplicados de evento de negocio,transaction_id y demas columnas,df['transaction_id'].duplicated().sum(),Infla rotacion e ingresos.,Unicidad,10 transaction_id repetidos + 1 fila duplicada exacta
+Etiquetas categoricas inconsistentes,category,df['category'].unique(),Fragmenta una categoria en grupos falsos.,Consistencia,19 valores unicos en 'category' para 4 categorias reales
+Formatos de fecha mixtos,date,"patrones de texto y to_datetime(..., errors='coerce')",Asigna ventas al dia o mes equivocado.,Consistencia,"date mezcla ISO, con '/', con '-', texto y nulos"
+Valores imposibles,"units_sold, customer_rating",between() y comparaciones,Distorsiona demanda y satisfaccion.,Validez,8 cantidades negativas y 6 ratings fuera de 1-5
+Precios inflados por error de digitacion,unit_price,regla comercial y revision por categoria,Infla el ingreso y la dispersion.,Validez,5 precios con dos ceros adicionales (>= 100.000 COP)
+Georreferenciacion fuera de rango,"store_lat, store_lon",between() para latitud y longitud,Ubica tiendas en zonas incorrectas.,Georreferenciacion,6 coordenadas en cero o fuera de Medellin
+Columna sentiment 100% nula,sentiment,df_resenas['sentiment'].isna().sum(),Columna inservible tal como esta: no aporta analisis de sentimiento sin procesar el texto.,Completitud,160/160 valores nulos en df_resenas['sentiment']
+Rating de resenas con nulos,rating,df_resenas['rating'].isna().sum(),Sesga el rating promedio por tienda si se ignoran sin marcarlos.,Completitud,14/160 resenas sin rating numerico
+review_id repetido con contenido distinto,review_id,duplicated() sobre review_id,dos resenas distintas comparten identificador; agregarlas por review_id fusionaria eventos que no son el mismo,Unicidad,"160 registros y 157 review_id unicos; R0057, R0098 y R0150 aparecen dos veces con tienda, fecha y texto distintos"
