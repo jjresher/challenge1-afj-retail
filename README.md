@@ -4,7 +4,7 @@
 
 **Conjunto de datos elegido:** Dataset A: Retail
 
-**Fecha límite de entrega:** Lunes 27 de julio de 2026
+**Fecha límite de entrega:** Domingo 26 de julio de 2026
 
 **Fecha de entrega real:** Lunes 27 de julio de 2026
 
@@ -43,7 +43,9 @@
 ```
 .
 ├── README.md
+├── Taller_Practico_01_Guia.md
 ├── requirements.txt
+├── unificacion.md
 ├── data/
 │   ├── raw/
 │   │   ├── reseñas_clientes.json
@@ -52,6 +54,7 @@
 │   └── processed/
 │       └── retail_ventas_PROCESADO.csv
 ├── docs/
+│   ├── README_template_docente.md
 │   └── declaracion_uso_IA.md
 ├── notebooks/
 │   └── taller_practico_01_analisis.ipynb
@@ -62,8 +65,13 @@
 │   │   └── transacciones_por_categoria.jpg
 │   └── tabla_diagnostico_gigo.csv
 └── taller_practico/
+    ├── Taller_Practico_01.pdf
     └── Taller_Practico_01.tex
 ```
+
+`Taller_Practico_01_Guia.md` define las Tareas 1 a 5 y la organización del repositorio.
+`taller_practico/Taller_Practico_01.tex` es el cuestionario independiente de tres partes y se
+conserva como referencia del enunciado, según la opción 2 de la sección 6.1 de la guía.
 
 ## 4. Cómo reproducir el análisis (Solamente vía terminal)
 
@@ -75,8 +83,9 @@ cd challenge1-afj-retail
 # 2. Crear entorno e instalar dependencias
 pip install -r requirements.txt
 
-# 3. Ejecutar el notebook de inicio a fin
-jupyter notebook notebooks/taller_practico_01_analisis.ipynb
+# 3. Ejecutar el notebook de inicio a fin en un kernel nuevo
+jupyter nbconvert --to notebook --execute --inplace \
+  notebooks/taller_practico_01_analisis.ipynb
 ```
 
 ## 5. Principales hallazgos

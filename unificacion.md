@@ -51,7 +51,9 @@ bbcd825 fix(notebook): corregir comparacion y validar cifras finales
 ## Decisiones tomadas
 
 - El árbol comenzó con copias `.tex`, checkpoints y un archivo de bloqueo sin seguimiento. Eran copias exactas del `.tex` ya versionado. Se preservaron reversiblemente en `stash@{0}` con el nombre `respaldo archivos sin seguimiento previos a taller 01`.
-- `Taller_Practico_01_Guia.md` no existe en el repositorio. Se usó el `.tex` original versionado como fuente de la guía.
+- La verificación inicial se hizo antes de que `Taller_Practico_01_Guia.md` estuviera disponible.
+  Después de recibirla se repitió la auditoría con la guía como fuente normativa y se mantuvo el
+  `.tex` como cuestionario independiente.
 - Las tablas GIGO estaban previamente desalineadas. Se conservó toda la información correcta, se añadió `columnas` y se sincronizaron ambos artefactos sin eliminar hallazgos.
 - En `customer_rating`, la limpieza propia conserva nulos y no afirma una imputación inexistente. La interpretación explica la diferencia frente al archivo de referencia.
 
